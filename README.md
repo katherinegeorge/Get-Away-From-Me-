@@ -8,3 +8,9 @@
 ● Logitch C270 HD WEBCAM
 
 # 連接方式
+![image]
+
+# 系統架構
+# 安裝套件
+# 指令介紹
+
