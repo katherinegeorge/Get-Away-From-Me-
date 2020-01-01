@@ -6,7 +6,7 @@ Created on Fri Nov 22 20:48:15 2019
 """
 
 import time
-import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO #基本的GPIO控制功能
 import cv2
 import subprocess
 import smtplib
@@ -34,15 +34,15 @@ def mail():
     smtpserver.sendmail(gmail_user, [to], msg.as_string())
     smtpserver.quit()
     
-MONITOR_PIN = 18
+MONITOR_PIN = 18 #定義PIR輸出所連連接的腳位，BCM編號為18
  
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(MONITOR_PIN, GPIO.IN)
+GPIO.setmode(GPIO.BCM) #BCM編號方式
+GPIO.setup(MONITOR_PIN, GPIO.IN) #將PIR輸出所使用的腳位設定為輸入模式
  
 try:
     print('按下 Ctrl-C 可停止程式')
     while True:
-        if(GPIO.input(MONITOR_PIN) == 1):
+        if(GPIO.input(MONITOR_PIN) == 1): #當感測器偵測到物體，將會寄信到email並且開始錄影
             print("start")
             mail()
 	    cap = cv2.VideoCapture(0)
